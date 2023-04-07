@@ -26,9 +26,8 @@ export class AppComponent implements OnInit, OnDestroy {
     router.events
     .pipe(filter(event => event instanceof NavigationEnd))
     .subscribe(event => {
-      console.log(event)
       event = event as NavigationEnd;
-      this.navigate(event.url);
+      this.navigate(event.url !== '/' ? event.url : '/dashboard');
       this.toggleSideNav();
     })
   }
