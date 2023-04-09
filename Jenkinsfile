@@ -1,13 +1,8 @@
-pipeline {
-  agent any
-  environment {
-    DOCKER_CERT_PATH = credentials('dockerhub')
-  }
-  stages {
-    stage('Docker Check') {
-      steps {
-        sh "docker version" // DOCKER_CERT_PATH is automatically picked up by the Docker client
-      }
+node {
+    /* Requires the Docker Pipeline plugin to be installed */
+    docker.image('node:16.13.1-alpine').inside {
+        stage('Test') {
+            sh 'node --version'
+        }
     }
-  }
 }
