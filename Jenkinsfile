@@ -1,8 +1,10 @@
-node {
-    /* Requires the Docker Pipeline plugin to be installed */
-    docker.image('node:16.13.1-alpine').inside {
-        stage('Test') {
-            sh 'node --version'
+pipeline {
+    agent { docker { image 'node:16.17.1-alpine' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'node --version'
+            }
         }
     }
 }
