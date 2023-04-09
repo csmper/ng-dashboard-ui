@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ng-dashboard-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ng-dashboard-app
+  template:
+    metadata:
+      labels:
+        app: ng-dashboard-app
+    spec:
+      containers:
+      - name: ng-dashboard-app
+        image: gsuhas/angular-dashboard-app:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "300m"
+          limits:
+            memory: "200Mi"
+            cpu: "600m"
+      restartPolicy: Always
