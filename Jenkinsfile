@@ -5,7 +5,7 @@ pipeline {
     // see the discussion about this in PR 77 and PR 52: 
     // https://github.com/jenkinsci/docker-commons-plugin/pull/77#discussion_r280910822
     // https://github.com/jenkinsci/docker-commons-plugin/pull/52
-    'docker' '18.09'
+    'dockerTool' '18.09'
   }
   environment {
     DOCKER_CERT_PATH = credentials('dockerhub')
