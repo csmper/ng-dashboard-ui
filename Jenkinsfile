@@ -3,10 +3,7 @@ pipeline {
     stages {
         stage('Install') {
             steps {
-                script {
-                    docker.withTool('docker') { 'docker pull image node:latest' }
-                    // sh 'npm install' 
-                }
+               sh 'docker pull image node:latest' 
             }
         }
 
