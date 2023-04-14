@@ -7,7 +7,7 @@ pipeline {
         registry = 'gsuhas/angular-dashboard-app'
         dockerHubCredentials = 'dockerhub'
         dockerImage = ''
-        PATH = "$PATH:/usr/local/bin"
+        PATH = "$PATH:/usr/local"
     }
     stages {
         stage('Install') {
