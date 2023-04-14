@@ -29,6 +29,7 @@ pipeline {
         }
 
         stage('Docker build image') {
+            agent { label 'docker' }
             steps {
                 script {
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
@@ -37,6 +38,7 @@ pipeline {
         }
 
         stage('Docker Deploy image') {
+            agent { label 'docker' }
             steps {
                 script {
                     docker.withRegistry( 'https://hub.docker.com/', dockerhub ) {
