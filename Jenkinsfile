@@ -40,7 +40,8 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry( 'https://hub.docker.com/', dockerhub ) {
-                    dockerImage.push()
+                        dockerImage.push()
+                    }
                 }
             }
         }
