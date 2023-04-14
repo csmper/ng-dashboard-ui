@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Install') {
             steps {
-               sh 'docker pull image node:latest' 
+               sh 'docker pull node:latest' 
             }
         }
 
