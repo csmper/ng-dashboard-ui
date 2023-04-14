@@ -29,33 +29,18 @@ pipeline {
             steps { sh 'npm run build' }
         }
 
-        stage('Docker version') {
+        stage('Docker build image') {
             steps {
-                script {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"                    
-                }
+                dockerImage = docker.build registry + ":$BUILD_NUMBER"
             }
         }
 
-
-        // stage('Docker build image') {
-        //     agent { label 'docker' }
-        //     steps {
-        //         script {
-        //             dockerImage = docker.build registry + ":$BUILD_NUMBER"
-        //         }
-        //     }
-        // }
-
-        // stage('Docker Deploy image') {
-        //     agent { label 'docker' }
-        //     steps {
-        //         script {
-        //             docker.withRegistry( 'https://hub.docker.com/', dockerhub ) {
-        //                 dockerImage.push()
-        //             }
-        //         }
-        //     }
-        // }
+        stage('Docker Deploy image') {
+            steps {
+                docker.withRegistry( 'https://hub.docker.com/', dockerhub ) {
+                    dockerImage.push()
+                }
+            }
+        }
     }
 }
