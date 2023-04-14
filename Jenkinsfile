@@ -31,10 +31,10 @@ pipeline {
         stage('Docker version') {
             steps {
                 sh 'docker version'
-                script {
-                    // dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                // script {
+                //     // dockerImage = docker.build registry + ":$BUILD_NUMBER"
                     
-                }
+                // }
             }
         }
 
