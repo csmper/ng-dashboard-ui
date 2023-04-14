@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:16.16.0-alpine'
+        }
+    }
     environment {
         HOME = '.'
         registry = 'gsuhas/angular-dashboard-app'
@@ -7,10 +11,6 @@ pipeline {
         dockerImage = ''
     }
     stages {
-        stage('Pull Node') {
-            steps { sh 'docker pull node:16.16.0-alpine' }
-        }
-
         stage('Install') {
             steps { sh 'npm install' }
         }
