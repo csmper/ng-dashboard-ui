@@ -29,7 +29,7 @@ pipeline {
         }
 
         stage('Docker version') {
-            agent docker
+            agent {docker}
             steps {
                 script {
                     sh docker + 'version'
