@@ -31,14 +31,18 @@ pipeline {
 
         stage('Docker build image') {
             steps {
-                dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                script {
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
             }
         }
 
         stage('Docker Deploy image') {
             steps {
-                docker.withRegistry( 'https://hub.docker.com/', dockerhub ) {
-                    dockerImage.push()
+                script {
+                    docker.withRegistry( 'https://hub.docker.com/', dockerhub ) {
+                        dockerImage.push()
+                    }
                 }
             }
         }
