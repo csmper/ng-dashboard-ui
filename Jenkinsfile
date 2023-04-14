@@ -1,9 +1,15 @@
 pipeline {
     agent any 
     stages {
-        stage('Install') {
+        stage('Initialize') {
             steps {
                sh 'docker pull node:latest' 
+            }
+        }
+
+        stage('Install') {
+            steps {
+                sh 'npm install'
             }
         }
 
