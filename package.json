@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "e2e": "cucumber-js test --config src/e2e/cucumber.json"
   },
   "private": true,
   "dependencies": {
@@ -28,13 +29,18 @@
     "@angular-devkit/build-angular": "^15.2.5",
     "@angular/cli": "~15.2.5",
     "@angular/compiler-cli": "^15.2.0",
+    "@cucumber/cucumber": "^9.1.0",
+    "@playwright/test": "^1.32.3",
     "@types/jest": "^29.5.0",
     "jest": "^29.5.0",
     "jest-preset-angular": "^13.0.1",
+    "ts-node": "^10.9.1",
     "typescript": "~4.9.4"
   },
   "jest": {
     "preset": "jest-preset-angular",
-    "setupFilesAfterEnv": ["<rootDir>/setup-jest.ts"]
+    "setupFilesAfterEnv": [
+      "<rootDir>/setup-jest.ts"
+    ]
   }
 }
