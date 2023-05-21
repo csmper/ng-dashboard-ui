@@ -9,9 +9,9 @@ export default defineConfig({
 });
 
 Given('User navigates to the Dashboard application', async function () {
-    browser = await chromium.launch({headless: false});
+    browser = await chromium.launch({headless: true});
     page = await browser.newPage();
-    await page.goto('http://localhost:5001/dashboard');
+    await page.goto('http://localhost:4200/dashboard');
 });
 
 When('User click on the header menu button', async function () {
@@ -34,5 +34,5 @@ Then('Side navigation should close', async function () {
 
 AfterAll(() => {
     page.close();
-    browser.close();
+    // browser.close();
 })
